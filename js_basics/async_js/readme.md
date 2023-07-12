@@ -1,1 +1,1 @@
-practice questions from extra class conducyed by karan
+practice questions from extra class conducted by karan
