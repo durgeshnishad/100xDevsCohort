@@ -6,15 +6,21 @@ and return a new array with the filtered elements.
 */
 
 function filterArray(ar, callback){
-    ar.forEach(callback)
-    console.log(new_arr)
+    function callforEach(element, index, array){
+        if(callback(element)== true)
+            new_arr.push(element);
+    } 
+    ar.forEach(callforEach)
 }
 
-function modifyArrayElement(element, index, array){
+function modifyArrayElement(element){
     if(element!=5){
-        new_arr.push(element);
+        return true;
     }
+    else
+        return false;
 }   
 var new_arr=[]
 var arr=[1,2,5,4,7,6,5,9]
-new_arr=filterArray(arr, modifyArrayElement)
+filterArray(arr, modifyArrayElement)
+console.log(new_arr)
