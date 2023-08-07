@@ -1,0 +1,37 @@
+// const fs= require("fs");
+
+// function readaFile(err, data){
+//     console.log(data);
+// }
+// fs.readFile('a.txt', 'utf-8', readaFile)
+
+const express = require('express')
+const app = express()
+const port = 3000
+
+function calculateSum(counter){
+    var sum=0;
+    for(var i=0;i<counter;i++)
+        sum+=i;
+    return sum;
+}
+
+function handleFirst(req, res){
+    var sum= calculateSum(100)
+    res.send('The sum is '+sum)
+}
+app.get('/handlesum', handleFirst)
+
+app.get('/',(req, res)=>{
+    res.send('Welcome')
+})
+
+function done(){
+    console.log(`Example app listening on port ${port}`)
+}
+app.listen(port, done)
+ 
+
+
+
+
