@@ -1,10 +1,3 @@
-// const fs= require("fs");
-
-// function readaFile(err, data){
-//     console.log(data);
-// }
-// fs.readFile('a.txt', 'utf-8', readaFile)
-
 const express = require('express')
 const app = express()
 const port = 3000
@@ -16,34 +9,30 @@ function calculateSum(counter){
     return sum;
 }
 
+var n=0;
+function middlewares(req, res, next){
+    n++;
+    console.log(n);
+    next();
+}
+app.use(middlewares)
 
-app.get('/handlesum-queryparam', (req, res) =>{
+app.get('/handlesum-query', (req, res)=>{
     var count= req.query.counter;
     var sum= calculateSum(count)
-    res.send('The sum is '+sum)
+    res.send('the total sum is: '+sum)
 })
 
-app.post('/handlesum-headers', (req, res) =>{
-    console.log(req.body)
+app.post('/handlesum-headers', (req, res)=>{
     var count= req.headers.counter;
     var sum= calculateSum(count)
-    res.send('The sum is '+sum)
+    res.send('the total sum is: '+sum)
 })
 
 app.get('/',(req, res)=>{
     res.send('Welcome')
 })
 
-app.get('/:username',(req, res) =>{
-    res.send('HEHE')
-})
-
-function done(){
+app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
-}
-app.listen(port, done)
- 
-
-
-
-
+})
