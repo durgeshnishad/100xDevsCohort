@@ -2,16 +2,20 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// app.get('/',(req, res)=>{
+//     res.send(`<head>
+//     <title>
+//         DURGESH NISHAD
+//     </title>
+//     </head>
+//         <body>
+//             Hi There    
+//         </body>
+//     `)
+// })
+
 app.get('/',(req, res)=>{
-    res.send(`<head>
-    <title>
-        DURGESH NISHAD
-    </title>
-    </head>
-        <body>
-            Hi There    
-        </body>
-    `)
+    res.sendFile(__dirname+ "index.html")
 })
 
 app.listen(port, () =>{
