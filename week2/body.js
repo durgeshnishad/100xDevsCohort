@@ -12,16 +12,15 @@ function calculateSum(counter){
 
 app.use(bodyparser.json())
 
-// app.get('/handlesum-query', (req, res)=>{
-//     var count= req.query.counter;
-//     var sum= calculateSum(count)
-//     res.send('the total sum is: '+sum)
-// })
-
-app.post('/handlesum-headers', (req, res)=>{
+app.post('/handlesum-body', (req, res)=>{
     var count= req.body.counter;
-    var sum= calculateSum(count)
-    res.send('the total sum is: '+sum)
+    if(count<10000){
+        var sum= calculateSum(count)
+        res.send('the total sum is: '+sum)
+    }
+    else{
+        res.status(411).send("You've entered a big number")
+    }
 })
 
 app.get('/',(req, res)=>{
